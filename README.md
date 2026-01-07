@@ -1,5 +1,5 @@
 ## Hardware research for real time gait learnin
-This report evaluates the **Hiwonder MechDog**, **NavBot-EG01**, **Petoi Bittle**, and the **RealAnt** for your specific use case: online Reinforcement Learning (RL) with a tethered power supply and offloaded computation (Serial/WiFi).
+This report evaluates the **Hiwonder MechDog**, **NavBot-EG01**, **Petoi Bittle**, and the **RealAnt** for our specific use case: online Reinforcement Learning (RL) with a tethered power supply and offloaded computation (Serial/WiFi).
 
 Date: 7 Jan 2026
 
