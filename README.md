@@ -7,69 +7,62 @@ Stay tuned for updates.
 
 ---
 
-### Comparison Matrix for Online RL
+### 1. Hiwonder MechDog (Robust Research Entry)
 
-| Feature | **Hiwonder MechDog** | **NavBot-EG01** | **Petoi Bittle (V2/X)** | **RealAnt** |
-| --- | --- | --- | --- | --- |
-| **Durability** | **High** (Metal Linkage) | **Medium** (Plastic) | **High** (Injection ABS) | **Medium** (3D Printed) |
-| **Action Space** | 8-DOF | 8-DOF | 9-10 DOF | 8-DOF |
-| **On-board Sensors** | IMU + Ultrasonic | ESP32 (Internal IMU) | 6-Axis IMU | IMU (External) |
-| **Primary SDK** | Python / Arduino | Python | C++ / Python Wrapper | Python (RealAnt Gym) |
-| **Est. Cost** | ~$300 | ~$199 | ~$260 - $300 | ~$450 (Kit) |
+The MechDog is a "Pro-sumer" educational robot. Its metal mechanical linkages make it significantly more durable than typical plastic hobby kits, which is vital for the erratic movements of early-stage RL.
 
----
-
-### 1. Hiwonder MechDog (The "Robust Middle-Ground")
-
-MechDog is designed as an educational AI platform, making it highly suitable for researchers who want a pre-built but open-source system.
-
-* **Durability:** Excellent for RL. The legs use a **hard aluminum alloy** and metal linkages. Unlike direct-drive plastic legs, these can withstand the high-torque "jerks" of an untrained RL agent.
-* **Changing Parts:** High modularity. It uses standard HPS-0618SG coreless servos and Hiwonder brackets, which are widely available on sites like AliExpress or RobotShop.
-* **SDK:** Very accessible. It provides a robust Python API for the ESP32, allowing you to easily stream IMU data and send joint commands over WiFi.
-* **Pros:** Metal frame handles heat and mechanical stress; built-in IMU is research-ready.
-* **Cons:** Enclosed battery compartment requires slight modification for a permanent power tether.
-
-### 2. NavBot-EG01 (The "Budget DIY" Pick)
-
-The NavBot is the most affordable entry point and is built from the ground up for Python developers.
-
-* **Durability:** Moderate. It is a lighter, plastic-heavy build. It may require more frequent screw tightening or replacement of plastic joints during the "falling" phase of RL.
-* **Changing Parts:** Best in class for repair. Since it is fully open-source (CAD files available), you can 3D print replacement parts yourself or buy the cheap BOM components locally.
-* **SDK:** Excellent. It is **Python-native**. Offloading to a PC is seamless because the codebase is already structured for high-level control.
-* **Pros:** Lowest cost; easiest code to modify; perfect for tethered setups due to open chassis.
-* **Cons:** Less physically robust than the MechDog; may require adding an external IMU if the board version lacks a high-precision one.
-
-### 3. Petoi Bittle (The "Agile Performer")
-
-Bittle is a high-performance bionic robot that has a massive community specifically for RL (OpenCat).
-
-* **Durability:** Surprisingly high. The "interlocking" injection-molded plastic is designed to survive adult footsteps. However, for RL, you **must** get the metal-gear (Alloy) servos, or you will strip the gears during jerky learning maneuvers.
-* **Changing Parts:** Moderate. Parts are proprietary; you’ll need to order specific Petoi spares if a leg snaps, though they are affordable.
-* **SDK:** Powerful but complex. The core logic is in C++ (Arduino). You must use a serial/Bluetooth bridge to talk to your PC-side Python RL agent.
-* **Pros:** Most "lifelike" movements; large existing RL community (GitHub: `opencat-gym`).
-* **Cons:** Proprietary battery is harder to bypass for a tether; higher DOF makes the "learning" time longer for the algorithm.
-
-### 4. RealAnt (The "Research Gold Standard")
-
-The RealAnt was created specifically to bridge the gap between simulation (OpenAI Ant) and reality.
-
-* **Durability:** Built for abuse. It uses a minimal design that assumes it will fall. The 3D-printed legs are "sacrificial"—they are meant to break before the servos do.
-* **Changing Parts:** DIY-friendly. Uses standard servos and 3D-printed parts.
-* **SDK:** **The best for RL.** It has a direct "RealAnt Gym" environment that makes it look like a standard simulation to your PC.
-* **Pros:** Designed specifically for tethered, continuous RL; convergence times are well-documented.
-* **Cons:** Highest cost; usually requires self-assembly and sourcing some parts.
+* **Durability:** **High.** The legs use **hard aluminum alloy** and a linkage system rather than direct-servo attachment. This protects the servo shafts from lateral impact during falls.
+* **Changing Parts:** **Easy.** It uses standard Hiwonder coreless servos (HPS-0618SG) and modular brackets. Replacement servos and metal frames are widely available as individual spares.
+* **Programming SDK:** **Excellent.** Python-friendly with a dedicated ESP32 controller. It supports Arduino and Python natively, and the [Official Wiki](https://wiki.hiwonder.com/projects/MechDog/en/latest/) provides full schematics and API documentation.
+* **Cost:** **~$299 (Standard) to ~$519 (Ultimate)**.
+* **Reference:** [Hiwonder MechDog Official Page](https://www.hiwonder.com/products/mechdog)
 
 ---
 
-### Final Recommendation for Your Goal
+### 2. NavBot-EG01 (The Open-Source Specialist)
 
-If you want to **start today with minimal hardware tinkering**, get the **Hiwonder MechDog**. The metal linkages provide the mechanical "insurance" you need when your RL agent inevitably makes a mistake.
+The EG01 is a community-driven project designed specifically for developers who want a low-cost, Python-first platform.
 
-If you have a **3D printer and want the lowest cost**, go with the **NavBot-EG01**. It is the easiest to "cable-power" because its guts are easily accessible.
-
-Would you like me to find the specific Python library links for the MechDog or NavBot to help you start your serial communication script?
+* **Durability:** **Medium.** The frame is typically 3D printed or lightweight plastic. While it handles its own weight well, repeated high-velocity "faceplants" during RL may require re-printing or re-tightening parts.
+* **Changing Parts:** **Very Easy.** Since it is fully open-source, you can 3D print your own replacement parts. It uses off-the-shelf ESP32 boards and hobby servos.
+* **Programming SDK:** **Best for Python.** It was built using Python as the primary language. The [NavBot GitHub](https://github.com/fuwei007/Navbot-EG01) includes complete mechanical designs (STP), PCB layouts, and motion control code.
+* **Cost:** **~$100–$199** (varies by DIY vs. Pre-assembled).
+* **Reference:** [NavBot-EG01 GitHub Repository](https://github.com/fuwei007/Navbot-EG01)
 
 ---
 
-[Petoi Bittle Reinforcement Learning Research](https://www.youtube.com/watch?v=-jqykPcQ5bs)
+### 3. Petoi Bittle (Agile Bionic Platform)
+
+Bittle is a high-speed, injection-molded robot. It is the most "bionic" in its movement but requires specific care for RL training.
+
+* **Durability:** **High.** The high-performance plastic is flexible and absorbs shock well. However, for RL, you **must** use the metal-gear "Alloy" servos to prevent internal gear stripping.
+* **Changing Parts:** **Moderate.** Parts are proprietary. While you can buy spares from Petoi, you cannot easily substitute third-party legs or frames without modification.
+* **Programming SDK:** **Extensive.** Uses the "OpenCat" framework. While the core is C++, there are excellent Python wrappers and a dedicated [RL Gym environment](https://github.com/ger01d/opencat-gym) created by the community.
+* **Cost:** **~$260–$320**.
+* **Reference:** [Petoi Bittle Documentation Hub](https://docs.petoi.com/)
+
+---
+
+### 4. RealAnt (The RL Research Standard)
+
+The RealAnt was designed by Ote Robotics specifically as a physical benchmark for RL algorithms like SAC and TD3.
+
+* **Durability:** **Designed for Abuse.** It is a minimal frame designed to be "tethered." It lacks a shell, making it easy to cool the servos and manage power cables.
+* **Changing Parts:** **Moderate.** Uses high-end **Dynamixel AX-12A** servos. These are expensive to replace but much harder to break than standard PWM servos. 3D models for the frame are open-source.
+* **Programming SDK:** **Research Ready.** Specifically designed to work with OpenAI Gym/Farama Gymnasium. The [RealAnt-RL GitHub](https://github.com/AaltoVision/realant-rl) provides the exact PyTorch implementations for learning to walk.
+* **Cost:** **~$350 (DIY) to ~$450 (Assembled)**.
+* **Reference:** [Ote Robotics RealAnt GitHub](https://github.com/OteRobotics/realant)
+
+---
+
+### General direction
+
+* **For pure research/speed of learning:** Get the **RealAnt**. It has the most established RL software stack.
+* **For durability and out-of-the-box use:** Get the **Hiwonder MechDog**. The metal linkages and integrated IMU provide the most stable hardware for the price.
+* **For extreme budget/DIY:** Build the **NavBot-EG01**.
+
+---
+
+[Demonstration of the RealAnt robot learning to walk](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D1-S_qE6P_Yk)
+This video illustrates how a tethered, low-cost quadruped can effectively learn complex locomotion gaits in real-time using the algorithms and platforms mentioned in this report.inforcement Learning Research](https://www.youtube.com/watch?v=-jqykPcQ5bs)
 This video showcases how robots like the RealAnt and Bittle are used in actual research labs to learn walking gaits from scratch using RL.
